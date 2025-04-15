@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="layout" inherit_id="web.layout">
+        <xpath expr="//head" position="inside">
+            <!-- Google Fonts -->
+            <link href="https://fonts.gstatic.com" rel="preconnect"/>
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"/>
+        </xpath>
+    </template>
+
+    <template id="webclient_bootstrap" inherit_id="web.webclient_bootstrap">
+        <xpath expr="//div[hasclass('o_web_client')]" position="attributes">
+            <attribute name="class" add="nice_theme" separator=" "/>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_main_navbar')]" position="replace">
+            <!-- ======= Header ======= -->
+            <header id="header" class="header fixed-top d-flex align-items-center">
+                <div class="d-flex align-items-center justify-content-between">
+                    <a t-attf-href="/web" class="logo d-flex align-items-center">
+                        <img src="/nice_backend_theme/static/img/logo.png" alt=""/>
+                        <span class="d-none d-lg-block">Juvana</span>
+                    </a>
+                    <i class="bi bi-list toggle-sidebar-btn"></i>
+                </div>
+
+                <div class="search-bar">
+                    <form class="search-form d-flex align-items-center">
+                        <input type="text" name="query" placeholder="Search" title="Enter search keyword"/>
+                        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+
+                <nav class="header-nav ms-auto">
+                    <ul class="d-flex align-items-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-bell"></i>
+                                <span class="badge bg-primary badge-number">4</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-chat-left-text"></i>
+                                <span class="badge bg-success badge-number">3</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                                <img src="/nice_backend_theme/static/img/profile-img.jpg" alt="Profile" class="rounded-circle"/>
+                                <span class="d-none d-md-block dropdown-toggle ps-2" t-esc="user_id.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+                <ul class="sidebar-nav" id="sidebar-nav">
+                    <t t-foreach="menu_data['children']" t-as="menu">
+                        <li class="nav-item">
+                            <t t-if="menu.get('children')">
+                                <a class="nav-link collapsed" data-bs-target="#menu-{menu.id}" data-bs-toggle="collapse" href="#">
+                                    <i t-attf-class="bi bi-menu-button-wide"></i>
+                                    <span t-esc="menu['name']"/>
+                                    <i class="bi bi-chevron-down ms-auto"></i>
+                                </a>
+                                <ul t-attf-id="menu-{menu.id}" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                                    <t t-foreach="menu['children']" t-as="submenu">
+                                        <li>
+                                            <a t-att-href="submenu.get('action') and '#menu_id=%s&amp;action_id=%s' % (submenu['id'], submenu['action'].split(',')[1]) or '#'">
+                                                <i class="bi bi-circle"></i>
+                                                <span t-esc="submenu['name']"/>
+                                            </a>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </t>
+                            <t t-else="">
+                                <a t-att-href="menu.get('action') and '#menu_id=%s&amp;action_id=%s' % (menu['id'], menu['action'].split(',')[1]) or '#'" class="nav-link collapsed">
+                                    <i class="bi bi-grid"></i>
+                                    <span t-esc="menu['name']"/>
+                                </a>
+                            </t>
+                        </li>
+                    </t>
+                </ul>
+            </aside>
+        </xpath>
+    </template>
+</odoo>

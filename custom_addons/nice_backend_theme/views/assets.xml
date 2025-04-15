@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!-- Theme SCSS -->
+                <link rel="stylesheet" type="text/scss" href="/nice_backend_theme/static/src/scss/style.scss"/>
+                
+                <!-- Theme JS -->
+                <script type="text/javascript" src="/nice_backend_theme/static/src/js/theme.js"/>
+                <script type="text/javascript" src="/nice_backend_theme/static/src/js/sidebar.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

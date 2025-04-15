@@ -1,0 +1,90 @@
+// Colors
+$o-brand-primary: #714B67;
+$o-brand-secondary: #68465f;
+$o-brand-lightest: #f6f7fa;
+
+// Main navbar
+.o_main_navbar {
+    background-color: $o-brand-primary;
+    border-bottom: 1px solid darken($o-brand-primary, 10%);
+    color: white;
+
+    > .o_menu_brand {
+        color: white;
+    }
+
+    .dropdown-toggle {
+        color: white !important;
+    }
+
+    .o_menu_sections {
+        > li {
+            > a {
+                color: white;
+                &:hover {
+                    background-color: $o-brand-secondary;
+                }
+            }
+        }
+    }
+}
+
+// Form view
+.o_form_view {
+    .o_form_sheet {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid #dfe2e6;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        padding: 24px;
+    }
+
+    .o_form_statusbar {
+        background-color: $o-brand-lightest;
+        border-bottom: 1px solid #dfe2e6;
+
+        .o_statusbar_status {
+            > .o_arrow_button {
+                background-color: white;
+                &.btn-primary {
+                    background-color: $o-brand-primary;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+// List view
+.o_list_view {
+    .o_list_table {
+        thead {
+            background-color: $o-brand-lightest;
+            th {
+                border-bottom: 2px solid #dfe2e6;
+            }
+        }
+    }
+}
+
+// Buttons
+.btn-primary {
+    background-color: $o-brand-primary;
+    border-color: darken($o-brand-primary, 5%);
+    &:hover {
+        background-color: darken($o-brand-primary, 10%);
+        border-color: darken($o-brand-primary, 15%);
+    }
+}
+
+// Search view
+.o_searchview {
+    border-radius: 4px;
+    border: 1px solid #dfe2e6;
+    .o_searchview_input_container {
+        .o_searchview_input {
+            border: none;
+            padding: 4px 8px;
+        }
+    }
+}

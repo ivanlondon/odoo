@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_mayan_document_tree" model="ir.ui.view">
+        <field name="name">mayan.document.tree</field>
+        <field name="model">mayan.document</field>
+        <field name="arch" type="xml">
+            <tree string="Mayan Documents">
+                <field name="name"/>
+                <field name="document_type"/>
+                <field name="mayan_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_mayan_document_form" model="ir.ui.view">
+        <field name="name">mayan.document.form</field>
+        <field name="model">mayan.document</field>
+        <field name="arch" type="xml">
+            <form string="Mayan Document">
+                <header>
+                    <button name="action_process_document" string="Process Document" 
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="document_type"/>
+                            <field name="mayan_id"/>
+                        </group>
+                        <group>
+                            <field name="file_name"/>
+                            <field name="file_data"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <field name="content"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_mayan_document_search" model="ir.ui.view">
+        <field name="name">mayan.document.search</field>
+        <field name="model">mayan.document</field>
+        <field name="arch" type="xml">
+            <search string="Search Mayan Documents">
+                <field name="name"/>
+                <field name="document_type"/>
+                <field name="mayan_id"/>
+                <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Processed" name="processed" domain="[('state','=','processed')]"/>
+                <filter string="Error" name="error" domain="[('state','=','error')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Document Type" name="document_type" context="{'group_by':'document_type'}"/>
+                    <filter string="State" name="state" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mayan_document" model="ir.actions.act_window">
+        <field name="name">Mayan Documents</field>
+        <field name="res_model">mayan.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_mayan_document_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No documents found. Documents will appear here when synchronized from Mayan EDMS.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_mayan_root" name="Mayan EDMS" sequence="10"/>
+    <menuitem id="menu_mayan_document" name="Documents" parent="menu_mayan_root" action="action_mayan_document" sequence="1"/>
+</odoo>

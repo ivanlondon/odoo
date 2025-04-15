@@ -1,0 +1,46 @@
+// Juvana brand colors
+$juvana-blue: #00B2E3;
+$juvana-yellow: #FFD700;
+
+// Override Odoo variables
+$o-brand-primary: $juvana-blue;
+$o-brand-secondary: darken($juvana-blue, 10%);
+$o-brand-odoo: $juvana-blue;
+
+// Navbar styling
+.o_main_navbar {
+    background-color: $juvana-blue;
+    border-bottom: 1px solid darken($juvana-blue, 5%);
+    
+    .o_menu_brand, .dropdown-toggle, .o_menu_sections > li > a {
+        color: white !important;
+    }
+}
+
+// Buttons
+.btn-primary {
+    background-color: $juvana-blue;
+    border-color: darken($juvana-blue, 5%);
+    
+    &:hover {
+        background-color: darken($juvana-blue, 10%);
+    }
+}
+
+// Form elements
+.nav-link.active {
+    border-bottom-color: $juvana-blue !important;
+}
+
+.o_required_modifier {
+    color: $juvana-blue !important;
+}
+
+// Links
+a {
+    color: $juvana-blue;
+    
+    &:hover {
+        color: darken($juvana-blue, 15%);
+    }
+}

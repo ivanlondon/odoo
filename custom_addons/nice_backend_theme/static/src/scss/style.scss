@@ -1,0 +1,456 @@
+// Theme Variables
+$primary-color: #00B2E3;  // Juvana Blue
+$primary-dark: #0091B8;   // Darker Blue
+$primary-light: #E6F7FC;  // Light Blue
+$accent-color: #FFD700;   // Juvana Yellow
+$text-color: #2D3748;     // Dark Gray
+$text-light: #718096;     // Light Gray
+$bg-color: #F7FAFC;       // Background
+$white: #FFFFFF;
+$border-color: #E2E8F0;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+// Typography
+$font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Border Radius
+$radius-sm: 0.25rem;
+$radius-md: 0.375rem;
+$radius-lg: 0.5rem;
+
+// Base Styles
+body {
+    font-family: $font-sans;
+    color: $text-color;
+    background-color: $bg-color;
+    line-height: 1.5;
+}
+
+// Layout
+.o_web_client {
+    background-color: $bg-color;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    // Main Header
+    .o_main_navbar {
+        background-color: var(--white);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+        height: 3.5rem;
+        padding: 0 var(--spacing-md);
+        
+        // Brand/Logo
+        .o_menu_brand {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        
+        // Menu Items
+        .o_menu_sections {
+            .dropdown {
+                > .dropdown-toggle {
+                    color: var(--text-color);
+                    padding: var(--spacing-sm) var(--spacing-md);
+                    border-radius: var(--radius-md);
+                    
+                    &:hover {
+                        background-color: var(--primary-light);
+                    }
+                }
+            }
+        }
+        
+        // System Menu
+        .o_menu_systray {
+            .o_mail_systray_item .o_notification_counter {
+                background-color: var(--primary-color);
+            }
+        }
+    }
+
+        .toggle-sidebar-btn {
+            font-size: 24px;
+            padding: $spacing-sm;
+            cursor: pointer;
+            color: $text-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        .search-bar {
+            min-width: 300px;
+            padding: 0 $spacing-md;
+            
+            input {
+                width: 100%;
+                padding: $spacing-sm;
+                border: 1px solid $border-color;
+                border-radius: $radius-md;
+                
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                }
+            }
+        }
+
+        .search-form {
+            width: 100%;
+            position: relative;
+            
+            input {
+                width: 100%;
+                padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
+                border: 1px solid $border-color;
+                border-radius: $radius-md;
+                font-size: 0.875rem;
+                
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                }
+            }
+            
+            button {
+                position: absolute;
+                right: $spacing-sm;
+                top: 50%;
+                transform: translateY(-50%);
+                border: none;
+                background: none;
+                color: $text-light;
+                padding: $spacing-xs;
+                
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+    
+    .logo {
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+
+            img {
+                max-height: 26px;
+                margin-right: $spacing-sm;
+            }
+
+            span {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: $text-color;
+            }
+        }
+
+        .header-nav {
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-icon {
+                font-size: 1.25rem;
+                color: $text-color;
+                margin-right: $spacing-lg;
+                position: relative;
+                padding: $spacing-xs;
+                border-radius: $radius-sm;
+                
+                &:hover {
+                    background-color: $primary-light;
+                    color: $primary-color;
+                }
+            }
+
+            .nav-profile {
+                color: $text-color;
+                display: flex;
+                align-items: center;
+                padding: $spacing-xs $spacing-sm;
+
+                img {
+                    max-height: 36px;
+                    border-radius: 50%;
+                    margin-right: $spacing-xs;
+                }
+
+                span {
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                }
+                
+                &:hover {
+                    background-color: $primary-light;
+                    border-radius: $radius-md;
+                }
+            }
+
+            .badge-number {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background-color: $primary-color;
+                color: $white;
+                font-size: 0.75rem;
+                padding: 2px 6px;
+                border-radius: 10px;
+            }
+        }
+
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    z-index: 996;
+    transition: all 0.3s;
+    padding: 20px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #aab7cf transparent;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+    background-color: #fff;
+
+    .nav-item {
+      margin-bottom: 5px;
+    }
+
+    .nav-heading {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #899bbd;
+      font-weight: 600;
+      margin: 10px 0 5px 15px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: #4154f1;
+      padding: 10px 15px;
+      border-radius: 4px;
+      background: #f6f9ff;
+
+      i {
+        font-size: 16px;
+        margin-right: 10px;
+        color: #4154f1;
+      }
+
+      &.collapsed {
+        color: #012970;
+        background: #fff;
+
+        i {
+          color: #899bbd;
+        }
+      }
+
+      &:hover {
+        color: #4154f1;
+        background: #f6f9ff;
+
+        i {
+          color: #4154f1;
+        }
+      }
+    }
+  }
+
+        &.toggle-sidebar {
+            .sidebar {
+                left: -280px;
+            }
+
+            #main {
+                margin-left: 0;
+            }
+        }
+    }
+
+    // Content Area
+    .o_content {
+        background-color: $white;
+        border-radius: $radius-lg;
+        box-shadow: $shadow-md;
+        margin: $spacing-md;
+        padding: $spacing-lg;
+    }
+    
+    // Form Views
+    .o_form_view {
+        .o_form_sheet {
+            border: 1px solid $border-color;
+            border-radius: $radius-lg;
+            padding: $spacing-lg;
+            
+            .o_notebook {
+                .nav-tabs {
+                    border-bottom: 2px solid $border-color;
+                    
+                    .nav-link {
+                        color: $text-light;
+                        border: none;
+                        padding: $spacing-sm $spacing-md;
+                        
+                        &.active {
+                            color: $primary-color;
+                            border-bottom: 2px solid $primary-color;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Status bar
+        .o_form_statusbar {
+            background-color: $white;
+            padding: $spacing-sm;
+            border-bottom: 1px solid $border-color;
+            
+            .o_statusbar_status {
+                .o_arrow_button {
+                    background-color: $white;
+                    border: 1px solid $border-color;
+                    
+                    &.btn-primary {
+                        background-color: $primary-color;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+    
+    // List View
+    .o_list_view {
+        border-radius: $radius-lg;
+        
+        thead {
+            background-color: $primary-light;
+            
+            th {
+                border-bottom: 2px solid $border-color;
+            }
+        }
+        
+        tbody tr:hover {
+            background-color: $primary-light;
+        }
+    }
+    
+    // Kanban View
+    .o_kanban_view {
+        .o_kanban_record {
+            border: 1px solid $border-color;
+            border-radius: $radius-md;
+            padding: $spacing-md;
+            margin: $spacing-xs;
+            background-color: $white;
+            box-shadow: $shadow-sm;
+            
+            &:hover {
+                box-shadow: $shadow-md;
+            }
+        }
+    }
+    
+    // Buttons
+    .btn-primary {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        border-radius: $radius-md;
+        padding: $spacing-sm $spacing-md;
+        
+        &:hover {
+            background-color: $primary-dark;
+            border-color: $primary-dark;
+        }
+    }
+    
+    .btn-secondary {
+        background-color: $white;
+        border-color: $border-color;
+        color: $text-color;
+        border-radius: $radius-md;
+        padding: $spacing-sm $spacing-md;
+        
+        &:hover {
+            background-color: $bg-color;
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .o_web_client {
+        .o_main_navbar {
+            padding: 0 $spacing-sm;
+        }
+        
+        .o_content {
+            margin: $spacing-sm;
+            padding: $spacing-md;
+        }
+    }
+}
+
+// Override Odoo styles
+.o_web_client.nice_theme {
+  .o_main {
+    background-color: #f6f9ff;
+  }
+
+  .o_form_view {
+    background-color: white;
+    padding: 24px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  }
+
+  .btn-primary {
+    background-color: #4154f1;
+    border-color: #4154f1;
+
+    &:hover {
+      background-color: #5969f3;
+      border-color: #5969f3;
+    }
+  }
+
+  .o_list_view {
+    background-color: white;
+    padding: 24px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  }
+}
